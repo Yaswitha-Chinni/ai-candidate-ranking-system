@@ -1,0 +1,7 @@
+weights:
+  semantic_similarity: 0.40
+  skill_match: 0.20
+  experience_match: 0.15
+  education_match: 0.10
+  projects_match: 0.10
+  behavioral_match: 0.05
