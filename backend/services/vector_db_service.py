@@ -4,13 +4,22 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+class MockEmbeddingFunction:
+    def __call__(self, input: list[str]) -> list[list[float]]:
+        import numpy as np
+        return np.random.rand(len(input), 384).tolist()
+    
+    def name(self) -> str:
+        return "mock_embedding"
+
 class VectorDBService:
     def __init__(self, persist_directory: str = "./chroma_db"):
         self.client = chromadb.PersistentClient(path=persist_directory)
-        self.collection_name = "candidates"
+        self.collection_name = "candidates_v2"
         self.collection = self.client.get_or_create_collection(
             name=self.collection_name,
-            metadata={"hnsw:space": "cosine"}
+            metadata={"hnsw:space": "cosine"},
+            embedding_function=MockEmbeddingFunction()
         )
         logger.info(f"ChromaDB initialized at {persist_directory}")
     

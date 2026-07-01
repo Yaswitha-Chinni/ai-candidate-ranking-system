@@ -2,7 +2,6 @@ fastapi
 uvicorn
 python-multipart
 pandas
-sentence-transformers
 google-generativeai
 chromadb
 scikit-learn

@@ -1,0 +1,12 @@
+.git
+.gitignore
+.env
+.venv
+venv
+__pycache__
+*.pyc
+node_modules/
+frontend/node_modules/
+README.md
+LICENSE
+pitch_deck_outline.md
